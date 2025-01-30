@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+.item {
+  /* width: calc((100% -24px * 3) / 4); */
+  height: 250px;
+  width: 390px;
+  /* overflow: hidden; */
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
