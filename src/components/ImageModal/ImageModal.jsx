@@ -1,10 +1,11 @@
-// import { useToggle } from "./services/useToggle.js";
-// import React from "react";
-// import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { FcLike } from "react-icons/fc";
+import s from "./ImageModal.module.css";
 
 const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+  },
   content: {
     top: "50%",
     left: "50%",
@@ -16,13 +17,14 @@ const customStyles = {
 };
 Modal.setAppElement("#root");
 
-const ImageModal = ({ isOpen, onClose, image }) => {
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+export const ImageModal = ({ isOpen, onClose, image }) => {
+  if (!image) return;
+  console.log(image);
+
   return (
     <div>
       <Modal
         isOpen={isOpen}
-        // onAfterOpen={onClose}
         onRequestClose={onClose}
         style={customStyles}
         contentLabel="Image Modal"
@@ -30,6 +32,7 @@ const ImageModal = ({ isOpen, onClose, image }) => {
         shouldCloseOnEsc={true}
       >
         <img
+          className={s.image}
           src={image.urls.regular}
           alt={image.description || "Image from Unsplash"}
           style={{
@@ -53,61 +56,3 @@ const ImageModal = ({ isOpen, onClose, image }) => {
     </div>
   );
 };
-
-export default ImageModal;
-
-// item.urls.regular
-
-// Не обмежуйся завданням, використовуй дані із об'єктів,
-// щоб відобразити більше цікавої інформації в модальному
-// вікні. Наприклад, про автора зображення, кількість лайків,
-// опис і т.д.
-
-//
-
-// // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-//
-
-// function App() {
-//   let subtitle;
-//   const [modalIsOpen, setIsOpen] = React.useState(false);
-
-//   function openModal() {
-//     setIsOpen(true);                  open
-//   }
-
-//   function afterOpenModal() {
-//     // references are now sync'd and can be accessed.
-//     subtitle.style.color = '#f00';
-//   }
-
-//   function closeModal() {
-//     setIsOpen(false);                  close
-//   }
-
-//   return (
-//     <div>
-//       <button onClick={openModal}>Open Modal</button>
-//       <Modal
-//         isOpen={modalIsOpen}
-//         onAfterOpen={afterOpenModal}
-//         onRequestClose={closeModal}
-//         style={customStyles}
-//         contentLabel="Example Modal"
-//       >
-//         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-//         <button onClick={closeModal}>close</button>
-//         <div>I am a modal</div>
-//         <form>
-//           <input />
-//           <button>tab navigation</button>
-//           <button>stays</button>
-//           <button>inside</button>
-//           <button>the modal</button>
-//         </form>
-//       </Modal>
-//     </div>
-//   );
-// }
-
-// ReactDOM.render(<App />, appElement);

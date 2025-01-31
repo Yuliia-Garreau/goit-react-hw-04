@@ -3,7 +3,7 @@ const ImageCard = ({ image, onClick }) => {
   return (
     <div className={s.img}>
       <img
-        onClick={onClick}
+        onClick={() => onClick(image)}
         src={image.urls.small}
         alt={image.alt_description}
         // height={280}
